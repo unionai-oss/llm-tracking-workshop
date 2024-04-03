@@ -9,7 +9,7 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 
 ## Setup Workspace
 
-There are two options for configuring your workspace: GitHub Codespaces and Google Colab. Please see [the README.md](https://github.com/thomasjpfan) for details.
+There are two options for configuring your workspace: GitHub Codespaces and Google Colab. Please see [the README.md](https://github.com/thomasjpfan/unionai-llm-tracking-workshop?tab=readme-ov-file#unionai-serverless-workshop) for details.
 
 ```{python}
 try:
