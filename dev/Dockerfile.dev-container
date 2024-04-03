@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1.5
+FROM mcr.microsoft.com/devcontainers/python:3.12-bookworm
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+RUN --mount=type=cache,target=/root/.cache/uv,id=uv \
+    --mount=type=bind,target=requirements.txt,src=requirements.txt \
+    /root/.cargo/bin/uv pip install \
+    -r requirements.txt --system
+
+COPY ./python_keyring /home/vscode/.config/python_keyring

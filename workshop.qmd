@@ -1,0 +1,113 @@
+# Union.ai Serverless Workshop
+
+Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
+
+1. Setup workspace and connect to Union.ai Serverless
+2. Launch a simple ML workflow & get familiar with the Python SDK
+3. LLM tracking workflow using HuggingFace and Weights & Bias.
+4. Explore models using Union hosted VSCode
+
+## Setup Workspace
+
+There are two options for configuring your workspace: GitHub Codespaces and Google Colab. Please see [the README.md](https://github.com/thomasjpfan) for details.
+
+```{python}
+try:
+    import google.colab
+    IN_COLAB = True
+except ImportError:
+    IN_COLAB = False
+
+if IN_COLAB:
+    !git clone --depth 1 https://github.com/thomasjpfan/unionai-llm-tracking-workshop.git
+    %cd unionai-llm-tracking-workshop
+    %pip install -r dev/requirements.txt
+```
+
+## Authenticate on Codespaces or Colab
+
+To authenticate with Severless run, and go to the link provided to authenticate your CLI.
+
+```{python}
+!unionai create login device-flow
+```
+
+To make sure everything is working, run this sample workflow:
+
+```{python}
+!unionai run --remote hello.py main
+```
+
+Go to the link provided to see your execution on Union!
+
+## ML Workflow
+
+In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. To run the
+workflow on Union:
+
+```{python}
+!unionai run --remote ml_workflow.py main
+```
+
+One benefit of `flytekit` is that you can run the workflow locally as well:
+
+```{python}
+!unionai run ml_workflow.py main
+```
+
+If you are on Codespaces, you can see the `ml_workflow.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/ml_workflow.py) to see the code. We will highlight the following features in the SDK and UI:
+
+- `@task`, `@workflow` in SDK
+- `ImageSpec`
+- Caching
+- `FlyteDeck`
+- Task level metrics
+
+## LLM Workflow
+
+In this section, we run a LLM workflow using Hugging Face and Weights and Biases. First, please go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key.
+
+Run the following command to create a secret on Union and paste n your wandb API key:
+
+```{python}
+!unionai create secret wandb_api_key
+```
+
+To see all your secrets run:
+
+```{python}
+!unionai get secret
+```
+
+With the secret define, you can now run:
+
+```{python}
+!unionai run --remote llm_tracking.py main \
+    --wandb_project unionai-serverless-demo \
+    --model distilbert-base-uncased
+```
+
+
+If you are on Codespaces, you can see the `llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/llm_tracking.py) to see the code. We will highlight the following code and UI features:
+
+- Secrets API
+- Declarative infrastructureV
+- UI to trigger workflow
+- TLM for GPUs
+- Error handling
+
+## VSCode Integration
+
+In this section, we will launch a VSCode instance hosted by Union to interact with the LLM trained by the previous workflow. First, we get the object uri link from the UI of an LLM task, then assign it to the following variable
+
+```{python}
+LLM_URI = "union://..."
+```
+
+Lastly, we launch the vscode environment by running:
+
+```{python}
+!unionai run --remote launch_vscode.py main --model $LLM_URI
+```
+
+We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.

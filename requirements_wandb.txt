@@ -1,0 +1,8 @@
+wandb==0.16.5
+numpy==1.26.4
+transformers==4.39.1
+datasets==2.18.0
+unionai==0.1.10
+flyteidl==1.11.1b0
+accelerate==0.27.2
+torch==2.0.1

@@ -1,0 +1,4 @@
+{
+    "model_name": "distilbert-base-uncased",
+    "wandb_project": "union-remote-demo-v11"
+}
