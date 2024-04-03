@@ -35,7 +35,7 @@ To authenticate with Severless run, and go to the link provided to authenticate 
 To make sure everything is working, run this sample workflow:
 
 ```{python}
-!unionai run --remote hello.py main
+!unionai run --remote starter.py main
 ```
 
 Go to the link provided to see your execution on Union!
