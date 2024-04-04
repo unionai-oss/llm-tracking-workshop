@@ -136,7 +136,7 @@ def train_model(
     os.environ["WANDB_WATCH"] = "false"
     os.environ["WANDB_LOG_MODEL"] = "end"
 
-    run = wandb.init(project=wandb_project, tags=[model], save_code=True)
+    run = wandb.init(project=wandb_project, save_code=True)
     run.notes = f"[See Execution]({url})"
 
     training_args = TrainingArguments(
@@ -172,10 +172,10 @@ def main(
     wandb_project: str,
     org: Optional[str] = org,
     endpoint: str = endpoint,
-) -> str:
+) -> tuple[str, FlyteFile]:
     dataset_cache_dir = download_dataset()
     model_cache_dir = download_model(model=model)
-    url, path = train_model(
+    return train_model(
         model=model,
         wandb_project=wandb_project,
         model_cache_dir=model_cache_dir,
@@ -183,4 +183,3 @@ def main(
         endpoint=endpoint,
         org=org,
     )
-    return url

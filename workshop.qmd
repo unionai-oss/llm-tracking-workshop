@@ -98,16 +98,23 @@ If you are on Codespaces, you can see the `llm_tracking.py` in the IDE. On Colab
 
 ## VSCode Integration
 
-In this section, we will launch a VSCode instance hosted by Union to interact with the LLM trained by the previous workflow. First, we get the object uri link from the UI of an LLM task, then assign it to the following variable
+In this section, we will launch a VSCode instance hosted by Union to interact with the LLM trained by the previous workflow. To get the URI for our model, copy and paste the execution id into the following cell:
 
 ```{python}
-LLM_URI = "union://..."
+from unionai.remote import UnionRemote
+
+EXECUTION_ID = "..."
+
+remote = UnionRemote()
+execution = remote.fetch_execution(name=EXECUTION_ID)
+llm_uri = execution.outputs["o1"].remote_source
 ```
+
 
 Lastly, we launch the vscode environment by running:
 
 ```{python}
-!unionai run --remote launch_vscode.py main --model $LLM_URI
+!unionai run --remote launch_vscode.py main --model $llm_uri
 ```
 
 We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.
