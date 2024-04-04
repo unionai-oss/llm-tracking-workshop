@@ -41,7 +41,10 @@ def _get_execution_url(
     )
 
 
-wandb_image = ImageSpec(cuda="11.8", requirements="requirements_wandb.txt")
+# wandb_image = ImageSpec(cuda="11.8", requirements="requirements_wandb.txt")
+wandb_image = (
+    "us-central1-docker.pkg.dev/uc-serverless-production/union/llm_tracking:0.0.1"
+)
 
 
 @task(container_image=wandb_image, cache=True, cache_version="v5")

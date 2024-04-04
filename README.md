@@ -13,9 +13,8 @@ There are two options for configuring your workspace: GitHub Codespaces and Goog
 
 ### Codespaces on GitHub
 
-1. Go to [serverless-gcp.cloud-staging.union.ai](https://serverless-gcp.cloud-staging.union.ai/) and login with your GitHub account.
-2. Fork this repo and navigate to your fork.
-3. Click on the Code button, go to the Codespaces tab, click on "Create codespaces on main".
+1. Fork this repo and navigate to your fork.
+2. Click on the Code button, go to the Codespaces tab, click on "Create codespaces on main".
 
 ![](assets/codespaces3.jpg)
 
@@ -23,5 +22,4 @@ There are two options for configuring your workspace: GitHub Codespaces and Goog
 
 ### Google Colab
 
-1. Go to [serverless-gcp.cloud-staging.union.ai](https://serverless-gcp.cloud-staging.union.ai/) and login with your GitHub account.
-2. Open [this notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
+1. Open [this notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).

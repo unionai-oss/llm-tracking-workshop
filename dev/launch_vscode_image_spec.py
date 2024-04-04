@@ -1,4 +1,5 @@
 """This file builds the image used in launch_vscode."""
+
 from flytekit import ImageSpec
 from flytekit.image_spec.image_spec import ImageBuildEngine
 

@@ -6,7 +6,9 @@ from flytekit import task, workflow, Resources
 from flytekitplugins.flyteinteractive import vscode
 from flytekit.types.file import FlyteFile
 
-CONTAINER_IMAGE = "ghcr.io/thomasjpfan/flyte_playground:Mmv063W68q2k3gdZcHImAw"
+CONTAINER_IMAGE = (
+    "us-central1-docker.pkg.dev/uc-serverless-production/union/launch_vscode:0.0.1"
+)
 
 
 def construct_file_downloader(task_function):
