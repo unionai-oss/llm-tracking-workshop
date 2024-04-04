@@ -29,6 +29,7 @@ image = ImageSpec(
         "scikit-learn==1.4.1.post1",
         "pandas==2.2.1",
         "matplotlib==3.8.3",
+        "unionai==0.1.12",
     ]
 )
 
