@@ -7,5 +7,3 @@ RUN --mount=type=cache,target=/root/.cache/uv,id=uv \
     --mount=type=bind,target=requirements.txt,src=requirements.txt \
     /root/.cargo/bin/uv pip install \
     -r requirements.txt --system
-
-COPY ./python_keyring /home/vscode/.config/python_keyring

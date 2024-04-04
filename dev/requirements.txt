@@ -1,9 +1,12 @@
+# required by union
 unionai==0.1.11
+flytekit==1.12.0b3
 flyteidl==1.11.1b0
+keyrings.alt==5.0.0
+
+# Additional dependencies
 pandas==2.2.1
 scikit-learn==1.4.1.post1
 flytekitplugins-flyteinteractive==1.11.0
 ipykernel
-keyrings.alt==5.0.0
 matplotlib
-flytekit==1.12.0b3

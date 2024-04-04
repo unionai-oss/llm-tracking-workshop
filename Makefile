@@ -1,5 +1,5 @@
-.PHONY: make_jupyter
-make_jupyter:
+.PHONY: notebook
+notebook:
 	jupytext --to ipynb workshop.qmd
 
 .PHONY: configure_buildx

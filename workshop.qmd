@@ -91,7 +91,7 @@ With the secret define, you can now run:
 If you are on Codespaces, you can see the `llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/llm_tracking.py) to see the code. We will highlight the following code and UI features:
 
 - Secrets API
-- Declarative infrastructureV
+- Declarative infrastructure
 - UI to trigger workflow
 - TLM for GPUs
 - Error handling
