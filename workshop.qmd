@@ -35,7 +35,7 @@ To authenticate with Severless run, and go to the link provided to authenticate 
 To make sure everything is working, run this sample workflow:
 
 ```{python}
-!unionai run --remote starter.py main
+!unionai run --remote workflows/starter.py main
 ```
 
 Go to the link provided to see your execution on Union!
@@ -46,16 +46,16 @@ In this section, we will launch a simple ML workflow and get familiar with the P
 workflow on Union:
 
 ```{python}
-!unionai run --remote ml_workflow.py main
+!unionai run --remote workflows/ml_workflow.py main
 ```
 
 One benefit of `flytekit` is that you can run the workflow locally as well:
 
 ```{python}
-!unionai run ml_workflow.py main
+!unionai run workflows/ml_workflow.py main
 ```
 
-If you are on Codespaces, you can see the `ml_workflow.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/ml_workflow.py) to see the code. We will highlight the following features in the SDK and UI:
+If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code. We will highlight the following features in the SDK and UI:
 
 - `@task`, `@workflow` in SDK
 - `ImageSpec`
@@ -82,13 +82,13 @@ To see all your secrets run:
 With the secret define, you can now run:
 
 ```{python}
-!unionai run --remote llm_tracking.py main \
+!unionai run --remote workflows/llm_tracking.py main \
     --wandb_project unionai-serverless-demo \
     --model distilbert-base-uncased
 ```
 
 
-If you are on Codespaces, you can see the `llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/llm_tracking.py) to see the code. We will highlight the following code and UI features:
+If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code. We will highlight the following code and UI features:
 
 - Secrets API
 - Declarative infrastructure
@@ -114,7 +114,7 @@ llm_uri = execution.outputs["o1"].remote_source
 Lastly, we launch the vscode environment by running:
 
 ```{python}
-!unionai run --remote launch_vscode.py main --model $llm_uri
+!unionai run --remote workflows/launch_vscode.py main --model $llm_uri
 ```
 
 We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.

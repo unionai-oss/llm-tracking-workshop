@@ -47,7 +47,12 @@ wandb_image = (
 )
 
 
-@task(container_image=wandb_image, cache=True, cache_version="v5")
+@task(
+    container_image=wandb_image,
+    cache=True,
+    cache_version="v7",
+    requests=Resources(cpu="3", mem="3Gi"),
+)
 def download_dataset() -> FlyteDirectory:
     from datasets import load_dataset
 
@@ -59,7 +64,12 @@ def download_dataset() -> FlyteDirectory:
     return dataset_cache_dir
 
 
-@task(container_image=wandb_image, cache=True, cache_version="v5")
+@task(
+    container_image=wandb_image,
+    cache=True,
+    cache_version="v7",
+    requests=Resources(cpu="3", mem="3Gi"),
+)
 def download_model(model: str) -> FlyteDirectory:
     from transformers import AutoTokenizer, AutoModelForSequenceClassification
 

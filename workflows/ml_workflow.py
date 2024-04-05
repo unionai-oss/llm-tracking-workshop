@@ -1,5 +1,5 @@
 from textwrap import dedent
-from flytekit import task, workflow, ImageSpec, current_context, Deck
+from flytekit import task, workflow, ImageSpec, current_context, Deck, Resources
 from flytekit.deck.renderer import MarkdownRenderer
 import pandas as pd
 from sklearn.datasets import fetch_openml
@@ -34,7 +34,12 @@ image = ImageSpec(
 )
 
 
-@task(cache=True, cache_version="2", container_image=image)
+@task(
+    cache=True,
+    cache_version="2",
+    container_image=image,
+    requests=Resources(cpu="2", mem="2Gi"),
+)
 def get_dataset() -> tuple[pd.DataFrame, pd.DataFrame]:
     dataset = fetch_openml(name="penguins", version=1, as_frame=True)
     train_dataset, test_dataset = train_test_split(
@@ -43,7 +48,10 @@ def get_dataset() -> tuple[pd.DataFrame, pd.DataFrame]:
     return train_dataset, test_dataset
 
 
-@task(container_image=image)
+@task(
+    container_image=image,
+    requests=Resources(cpu="3", mem="4Gi"),
+)
 def train_model(dataset: pd.DataFrame) -> BaseEstimator:
     X_train, y_train = dataset.drop("species", axis="columns"), dataset["species"]
     hist = HistGradientBoostingClassifier(
@@ -52,7 +60,11 @@ def train_model(dataset: pd.DataFrame) -> BaseEstimator:
     return hist.fit(X_train, y_train)
 
 
-@task(container_image=image, enable_deck=True)
+@task(
+    container_image=image,
+    enable_deck=True,
+    requests=Resources(cpu="3", mem="4Gi"),
+)
 def evaluate_model(model: BaseEstimator, dataset: pd.DataFrame) -> float:
     ctx = current_context()
 
