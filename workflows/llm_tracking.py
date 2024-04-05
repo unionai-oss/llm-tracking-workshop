@@ -16,7 +16,7 @@ from flytekit.types.directory import FlyteDirectory
 from flytekit.types.file import FlyteFile
 
 
-# wandb_image = ImageSpec(cuda="11.8", requirements="requirements_wandb.txt")
+# wandb_image = ImageSpec(cuda="11.8", requirements="workflows/requirements_wandb.txt")
 wandb_image = (
     "us-central1-docker.pkg.dev/uc-serverless-production/union/llm_tracking:0.0.1"
 )
