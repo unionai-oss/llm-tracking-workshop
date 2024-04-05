@@ -87,6 +87,10 @@ With the secret define, you can now run:
     --model distilbert-base-uncased
 ```
 
+Models you can use are:
+- `bert-base-cased`
+- `distilbert-base-uncased`
+- `roberta-base`
 
 If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code. We will highlight the following code and UI features:
 

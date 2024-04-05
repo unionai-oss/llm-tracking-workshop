@@ -8,37 +8,12 @@
 
 """
 
-from typing import Optional
 from pathlib import Path
 import tarfile
 import os
 from flytekit import task, workflow, current_context, ImageSpec, Secret, Resources
 from flytekit.types.directory import FlyteDirectory
 from flytekit.types.file import FlyteFile
-from flytekit.core.context_manager import FlyteContextManager
-from flytekit.models.core.identifier import WorkflowExecutionIdentifier
-
-from unionai._config import _get_organization, _get_config_obj
-
-state = FlyteContextManager.current_context().execution_state
-endpoint, org = "", None
-# Only runs locally
-if state and state.mode is None:
-    platform = _get_config_obj().platform
-    endpoint = platform.endpoint
-    org = _get_organization(platform)
-
-
-def _get_execution_url(
-    endpoint: str, org: Optional[str], execution_id: WorkflowExecutionIdentifier
-) -> str:
-    org_prefix = "console" if org is None else f"org/{org}"
-    return (
-        f"https://{endpoint}/{org_prefix}/"
-        f"projects/{execution_id.project}/"
-        f"domains/{execution_id.domain}/"
-        f"executions/{execution_id.name}"
-    )
 
 
 # wandb_image = ImageSpec(cuda="11.8", requirements="requirements_wandb.txt")
@@ -91,8 +66,6 @@ def train_model(
     wandb_project: str,
     model_cache_dir: FlyteDirectory,
     dataset_cache_dir: FlyteDirectory,
-    endpoint: str,
-    org: Optional[str],
 ) -> tuple[str, FlyteFile]:
     from datasets import load_dataset
     import numpy as np
@@ -139,15 +112,11 @@ def train_model(
         predictions = np.argmax(logits, axis=-1)
         return {"accuracy": np.mean(predictions == labels)}
 
-    execution_id = ctx.execution_id
-    url = _get_execution_url(endpoint, org, execution_id)
-
     os.environ["WANDB_API_KEY"] = ctx.secrets.get(key="wandb_api_key")
     os.environ["WANDB_WATCH"] = "false"
     os.environ["WANDB_LOG_MODEL"] = "end"
 
     run = wandb.init(project=wandb_project, save_code=True)
-    run.notes = f"[See Execution]({url})"
 
     training_args = TrainingArguments(
         output_dir=train_dir,
@@ -180,8 +149,6 @@ def train_model(
 def main(
     model: str,
     wandb_project: str,
-    org: Optional[str] = org,
-    endpoint: str = endpoint,
 ) -> tuple[str, FlyteFile]:
     dataset_cache_dir = download_dataset()
     model_cache_dir = download_model(model=model)
@@ -190,6 +157,4 @@ def main(
         wandb_project=wandb_project,
         model_cache_dir=model_cache_dir,
         dataset_cache_dir=dataset_cache_dir,
-        endpoint=endpoint,
-        org=org,
     )
