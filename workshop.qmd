@@ -10,7 +10,7 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 ## Setup Workspace
 
 There are two options for configuring your workspace: GitHub Codespaces and Google Colab.
-- If you are in Google Colab, you can continue with this workshop.
+- If you went to use Google Colab, please go to [this link to open notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb). If you are already in Colab, you can continue to the next steps.
 - If you want to use GitHub codespaces, please see [the README.md](https://github.com/thomasjpfan/unionai-llm-tracking-workshop?tab=readme-ov-file#unionai-serverless-workshop) for details.
 
 ```{python}
@@ -44,12 +44,7 @@ Go to the link provided to see your execution on Union!
 
 ## ML Workflow
 
-In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. To run the
-workflow on Union:
-
-```{python}
-!unionai run --remote workflows/ml_workflow.py main
-```
+In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, please go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code.
 
 One benefit of `flytekit` is that you can run the workflow locally as well:
 
@@ -57,17 +52,26 @@ One benefit of `flytekit` is that you can run the workflow locally as well:
 !unionai run workflows/ml_workflow.py main
 ```
 
-If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code. We will highlight the following features in the SDK and UI:
+And to run the workflow on Union:
+
+```{python}
+!unionai run --remote workflows/ml_workflow.py main
+```
+
+In this section, we highlight the following features in the SDK and UI:
 
 - `@task`, `@workflow` in SDK
 - `ImageSpec`
+- Declarative infrastructure
 - Caching
 - `FlyteDeck`
 - Task level metrics
 
 ## LLM Workflow
 
-In this section, we run a LLM workflow using Hugging Face and Weights and Biases. First, please go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key.
+In this section, we run a LLM workflow using Hugging Face and Weights and Biases. If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, please go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code.
+
+First, please go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key.
 
 Run the following command to create a secret on Union and paste n your wandb API key:
 
@@ -94,10 +98,9 @@ Models you can use are:
 - `distilbert-base-uncased`
 - `roberta-base`
 
-If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, please go to [this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code. We will highlight the following code and UI features:
+In this section, we highlight the following code and UI features:
 
 - Secrets API
-- Declarative infrastructure
 - UI to trigger workflow
 - TLM for GPUs
 - Error handling

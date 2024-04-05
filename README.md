@@ -22,4 +22,4 @@ There are two options for configuring your workspace: GitHub Codespaces and Goog
 
 ### Google Colab
 
-1. Open [this notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
+1. Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
