@@ -9,7 +9,11 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 
 ## Getting Started
 
-There are two options for configuring your workspace: GitHub Codespaces and Google Colab:
+There are two options for configuring your workspace: Google Colab and GitHub Codespaces:
+
+### Google Colab
+
+1. Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
 
 ### Codespaces on GitHub
 
@@ -19,7 +23,3 @@ There are two options for configuring your workspace: GitHub Codespaces and Goog
 ![](assets/codespaces3.jpg)
 
 4. In the Codespaces environment, open the `workshop.ipynb` file.
-
-### Google Colab
-
-1. Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
