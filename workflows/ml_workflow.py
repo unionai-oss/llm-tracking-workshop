@@ -1,4 +1,5 @@
 from textwrap import dedent
+import html
 from flytekit import task, workflow, ImageSpec, current_context, Deck, Resources
 from flytekit.deck.renderer import MarkdownRenderer
 import pandas as pd
@@ -25,12 +26,15 @@ def _convert_fig_into_html(fig: mpl.figure.Figure) -> str:
 
 
 image = ImageSpec(
+    builder="fast-builder",
     packages=[
         "scikit-learn==1.4.1.post1",
         "pandas==2.2.1",
         "matplotlib==3.8.3",
         "unionai==0.1.12",
-    ]
+        "flyteidl==1.11.1b0",
+    ],
+    registry="ghcr.io/thomasjpfan",
 )
 
 
@@ -79,15 +83,13 @@ def evaluate_model(model: BaseEstimator, dataset: pd.DataFrame) -> float:
     metrics_deck.append(_convert_fig_into_html(fig))
 
     # Add classification report
-    report = classification_report(y_test, y_pred)
-    md = dedent(
+    report = html.escape(classification_report(y_test, y_pred))
+    html_report = dedent(
         f"""\
-    ## Classification report
-    ```{report}```
-    """
+    <h2>Classification report</h2>
+    <pre>{report}</pre>"""
     )
-    html_md = MarkdownRenderer().to_html(md)
-    metrics_deck.append(html_md)
+    metrics_deck.append(html_report)
 
     ctx.decks.insert(0, metrics_deck)
 
