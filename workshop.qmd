@@ -117,6 +117,8 @@ EXECUTION_ID = "..."
 remote = UnionRemote()
 execution = remote.fetch_execution(name=EXECUTION_ID)
 llm_uri = execution.outputs["o1"].remote_source
+
+print(llm_uri)
 ```
 
 
