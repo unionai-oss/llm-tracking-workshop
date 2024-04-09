@@ -1,7 +1,7 @@
 """This file builds the image used in launch_vscode."""
 
 from flytekit import ImageSpec
-from flytekit.image_spec.image_spec import ImageBuildEngine
+from imagespec_fast_builder import FastImageBuilder
 
 image = ImageSpec(
     name="flyte_playground",
@@ -9,7 +9,7 @@ image = ImageSpec(
     python_version="3.11",
     apt_packages=["wget", "tar"],
     packages=[
-        "unionai==0.1.10",
+        "unionai==0.1.12",
         "flyteidl==1.11.1b",
         "flytekitplugins-flyteinteractive==1.11.0",
         "transformers==4.39.1",
@@ -25,4 +25,4 @@ image = ImageSpec(
     ],
 )
 
-ImageBuildEngine.build(image)
+FastImageBuilder()._build_image(image, push=False)
