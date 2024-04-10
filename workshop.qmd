@@ -54,7 +54,7 @@ One benefit of `flytekit` is that you can run the workflow locally as well:
 !unionai run workflows/ml_workflow.py main
 ```
 
-And to run the workflow on Union:
+And to run [the workflow](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) on Union:
 
 ```{python}
 !unionai run --remote workflows/ml_workflow.py main
@@ -86,7 +86,7 @@ To see all your secrets run:
 !unionai get secret
 ```
 
-With the secret define, you can now run:
+With the secret define, you can now run [the workflow](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) on Union:
 
 ```{python}
 !unionai run --remote workflows/llm_tracking.py main \
