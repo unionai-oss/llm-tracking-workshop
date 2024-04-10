@@ -9,9 +9,8 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 
 ## Getting Started
 
-If you have not already, please sign up for Union Serverless at: https://signup.union.ai/
-
-There are two options for configuring your workspace: Google Colab and GitHub Codespaces:
+1. If you have not already, please sign up for Union Serverless at: https://signup.union.ai/
+2. There are two options for configuring your workspace: Google Colab and GitHub Codespaces:
 
 ### Google Colab
 
