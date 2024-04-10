@@ -7,7 +7,7 @@ from flytekitplugins.flyteinteractive import vscode
 from flytekit.types.file import FlyteFile
 
 CONTAINER_IMAGE = (
-    "us-central1-docker.pkg.dev/uc-serverless-production/union/launch_vscode:0.0.2"
+    "us-central1-docker.pkg.dev/uc-serverless-production/union/launch_vscode:0.0.3"
 )
 
 

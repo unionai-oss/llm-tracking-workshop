@@ -80,8 +80,6 @@ def train_model(
     )
 
     ctx = current_context()
-    secrets = ctx.secrets
-    wandb.login(key=secrets.get(key="wandb_api_key"))
 
     working_dir = Path(ctx.working_directory)
     train_dir = working_dir / "models"
