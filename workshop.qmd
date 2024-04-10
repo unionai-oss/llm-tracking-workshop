@@ -92,7 +92,7 @@ With the secret define, you can now run [the workflow](https://github.com/thomas
     --model distilbert-base-uncased
 ```
 
-Run the folloining to get the execution id of the workflow we just launched:
+Run the folloining to get the execution id of the workflow we just launched.
 
 ```{python}
 from unionai.remote import UnionRemote
@@ -105,6 +105,7 @@ llm_executions = [
 
 EXECUTION_ID = llm_executions[0].id.name
 
+# Make sure the execution ID matches the one above
 print(EXECUTION_ID)
 ```
 
