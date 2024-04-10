@@ -51,7 +51,7 @@ def get_dataset() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 @task(
     container_image=image,
-    requests=Resources(cpu="3", mem="4Gi"),
+    requests=Resources(cpu="3", mem="2Gi"),
 )
 def train_model(dataset: pd.DataFrame) -> BaseEstimator:
     X_train, y_train = dataset.drop("species", axis="columns"), dataset["species"]
@@ -64,7 +64,7 @@ def train_model(dataset: pd.DataFrame) -> BaseEstimator:
 @task(
     container_image=image,
     enable_deck=True,
-    requests=Resources(cpu="3", mem="4Gi"),
+    requests=Resources(cpu="3", mem="2Gi"),
 )
 def evaluate_model(model: BaseEstimator, dataset: pd.DataFrame) -> float:
     ctx = current_context()

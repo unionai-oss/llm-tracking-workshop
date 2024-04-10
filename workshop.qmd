@@ -67,7 +67,6 @@ In this section, we highlight the following features in the SDK and UI:
 - Declarative infrastructure
 - Caching
 - `FlyteDeck`
-- Task level metrics
 
 ## LLM Workflow
 
@@ -104,7 +103,7 @@ In this section, we highlight the following code and UI features:
 
 - Secrets API
 - UI to trigger workflow
-- TLM for GPUs
+- Task level metrics for GPUs
 - Error handling
 
 ## VSCode Integration
