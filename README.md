@@ -9,19 +9,5 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 
 ## Getting Started
 
-1. If you have not already, please sign up for Union Serverless at: https://signup.union.ai/
-2. Sign into Weights and Bias: https://wandb.ai/
-3. There are two options for configuring your workspace: Google Colab and GitHub Codespaces:
+Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
 
-### Google Colab
-
-1. Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
-
-### Codespaces on GitHub
-
-1. Fork this repo and navigate to your fork.
-2. Click on the Code button, go to the Codespaces tab, click on "Create codespaces on main".
-
-![](assets/codespaces3.jpg)
-
-4. In the Codespaces environment, open the `workshop.ipynb` file.
