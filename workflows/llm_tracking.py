@@ -62,7 +62,7 @@ def download_model(model: str) -> FlyteDirectory:
     requests=Resources(cpu="2", mem="12Gi", gpu="1"),
 )
 def train_model(
-    model: str,
+    model_name: str,
     wandb_project: str,
     model_cache_dir: FlyteDirectory,
     dataset_cache_dir: FlyteDirectory,
@@ -87,9 +87,9 @@ def train_model(
     train_dir = working_dir / "models"
 
     dataset = load_dataset("imdb", cache_dir=dataset_cache_dir)
-    tokenizer = AutoTokenizer.from_pretrained(model, cache_dir=model_cache_dir)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=model_cache_dir)
     model = AutoModelForSequenceClassification.from_pretrained(
-        model,
+        model_name,
         num_labels=2,
         id2label={0: "NEGATIVE", 1: "POSITIVE"},
         label2id={"NEGATIVE": 0, "POSITIVE": 1},
@@ -116,7 +116,7 @@ def train_model(
     os.environ["WANDB_WATCH"] = "false"
     os.environ["WANDB_LOG_MODEL"] = "end"
 
-    run = wandb.init(project=wandb_project, save_code=True, tags=[model])
+    run = wandb.init(project=wandb_project, save_code=True, tags=[model_name])
 
     training_args = TrainingArguments(
         output_dir=train_dir,
@@ -153,7 +153,7 @@ def main(
     dataset_cache_dir = download_dataset()
     model_cache_dir = download_model(model=model)
     return train_model(
-        model=model,
+        model_name=model,
         wandb_project=wandb_project,
         model_cache_dir=model_cache_dir,
         dataset_cache_dir=dataset_cache_dir,
