@@ -1,43 +1,29 @@
-from textwrap import dedent
-from functools import partial
-import os
-from flytekit.core.context_manager import FlyteContextManager
+from pathlib import Path
+import tarfile
 from flytekit import task, workflow, Resources
 from flytekitplugins.flyteinteractive import vscode
 from flytekit.types.file import FlyteFile
 
 CONTAINER_IMAGE = (
-    "us-central1-docker.pkg.dev/uc-serverless-production/union/launch_vscode:0.0.3"
+    "us-central1-docker.pkg.dev/uc-serverless-production/union/launch_vscode:0.0.4"
 )
 
 
-def construct_file_downloader(task_function):
-    task_function_source_path = FlyteContextManager.current_context().user_space_params.TASK_FUNCTION_SOURCE_PATH
-    context_working_dir = (
-        FlyteContextManager.current_context().execution_state.working_dir
-    )
-    task_module_name, task_name = task_function.__module__, task_function.__name__
-    script = dedent(
-        f"""\
-    from download import download_model
-
-    download_model("{task_module_name}", "{task_name}", "{context_working_dir}")
-    """
-    )
-
-    task_function_source_dir = os.path.dirname(task_function_source_path)
-    with open(
-        os.path.join(task_function_source_dir, "model_downloader.py"), "w"
-    ) as file:
-        file.write(script)
-
-
 class custom_vscode(vscode):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._pre_execute = partial(
-            construct_file_downloader, task_function=self.task_function
-        )
+    def execute(self, *args, **kwargs):
+        model = kwargs["model"]
+
+        inputs_dir = Path("/root") / "model_dir"
+        inputs_dir.mkdir(exist_ok=True)
+
+        dest_name = model.remote_source.split("/")[-1]
+        print(f"Downloading file: {dest_name}")
+        local_path = model.download()
+        with tarfile.open(local_path, "r:gz") as tar:
+            print(f"Extracting model to {inputs_dir}")
+            tar.extractall(inputs_dir)
+
+        return super().execute(*args, **kwargs)
 
 
 @task(
