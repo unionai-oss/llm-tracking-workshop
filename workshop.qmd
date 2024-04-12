@@ -87,7 +87,7 @@ To see all your secrets run:
 If you are running into an issue with the secrets, uncomment the following code to delete the secret and try again:
 
 ```{python}
-!unionai delete secret wandb_api_key
+# !unionai delete secret wandb_api_key
 ```
 
 With the secret define, you can now run [the workflow](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) on Union:
@@ -101,15 +101,11 @@ With the secret define, you can now run [the workflow](https://github.com/thomas
 Run the folloining to get the execution id of the workflow we just launched.
 
 ```{python}
+from utils import get_recent_execution_id
 from unionai.remote import UnionRemote
 
 remote = UnionRemote()
-recent_executions = remote.recent_executions()
-llm_executions = [
-    e for e in recent_executions if e.spec.launch_plan.name == "llm_tracking.main"
-]
-
-EXECUTION_ID = llm_executions[0].id.name
+EXECUTION_ID = get_recent_execution_id("llm_tracking.main", remote)
 
 # Make sure the execution ID matches the one above
 print(EXECUTION_ID)
@@ -138,11 +134,24 @@ llm_uri = execution.outputs["o1"].remote_source
 print(llm_uri)
 ```
 
-
-Lastly, we launch the vscode environment by running:
+Launch the vscode environment by running:
 
 ```{python}
-!unionai run --remote workflows/launch_vscode.py main --model $llm_uri
+from utils import launch_vscode
+vscode_execution_id = launch_vscode(llm_uri, remote)
 ```
 
-In the VSCode environment open the `interact_with_model.py` file and click on `Run Cell` button at the top of the file. We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.
+In the VSCode environment:
+1. Open the `interact_with_model.py` file and click on `Run Cell` button at the top of file.
+2. The `review.txt` file contains reivews you can use to give the model.
+
+We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.
+
+To stop the VSCode environment, uncomment the following and run it:
+
+```{python}
+vscode_execution = remote.fetch_execution(name=vscode_execution_id)
+remote.terminate(vscode_execution, cause="Stop VSCode from Colab")
+```
+
+Thank you for attending this workshop!

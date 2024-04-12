@@ -28,7 +28,7 @@ class custom_vscode(vscode):
 
 @task(
     container_image=CONTAINER_IMAGE,
-    requests=Resources(cpu="3", mem="12Gi"),
+    requests=Resources(cpu="3", mem="6Gi"),
 )
 @custom_vscode
 def start_vscode(model: FlyteFile):
