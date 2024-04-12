@@ -18,13 +18,6 @@ import io
 import base64
 
 
-def _convert_fig_into_html(fig: mpl.figure.Figure) -> str:
-    img_buf = io.BytesIO()
-    fig.savefig(img_buf, format="png")
-    img_base64 = base64.b64encode(img_buf.getvalue()).decode()
-    return f'<img src="data:image/png;base64,{img_base64}" alt="Rendered Image" />'
-
-
 image = ImageSpec(
     packages=[
         "scikit-learn==1.4.1.post1",
@@ -37,7 +30,7 @@ image = ImageSpec(
 
 @task(
     cache=True,
-    cache_version="2",
+    cache_version="3",
     container_image=image,
     requests=Resources(cpu="2", mem="2Gi"),
 )
@@ -98,3 +91,10 @@ def main() -> float:
     train, test = get_dataset()
     model = train_model(dataset=train)
     return evaluate_model(model=model, dataset=test)
+
+
+def _convert_fig_into_html(fig: mpl.figure.Figure) -> str:
+    img_buf = io.BytesIO()
+    fig.savefig(img_buf, format="png")
+    img_base64 = base64.b64encode(img_buf.getvalue()).decode()
+    return f'<img src="data:image/png;base64,{img_base64}" alt="Rendered Image" />'
