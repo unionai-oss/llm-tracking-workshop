@@ -1,3 +1,4 @@
+import sys
 from subprocess import run
 from time import sleep
 import re
@@ -45,6 +46,7 @@ def launch_vscode(llm_uri, remote):
         execution = remote.sync_execution(execution, sync_nodes=True)
         if execution.is_done and execution.error is not None:
             print("There was an error launching VScode. Please try again.")
+            sys.exit(1)
 
         if execution.closure.phase != core_execution_models.TaskExecutionPhase.RUNNING:
             sleep(1)
@@ -71,3 +73,12 @@ def launch_vscode(llm_uri, remote):
     print(f"https://{endpoint}{uri}")
 
     return execution.id.name
+
+
+def stop_vscode(vscode_execution_id, remote):
+    vscode_execution = remote.fetch_execution(name=vscode_execution_id)
+    if not vscode_execution.is_done:
+        remote.terminate(vscode_execution, cause="Stop VSCode from Colab")
+        print("Stopped VSCode instance!")
+    else:
+        print("VSCode instance already stopped!")

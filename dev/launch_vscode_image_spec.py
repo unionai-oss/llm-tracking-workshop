@@ -27,6 +27,7 @@ image = ImageSpec(
         "chown -R flytekit /tmp",
         "su -c 'code-server --install-extension /tmp/code-server/ms-python.python-2023.20.0.vsix' flytekit",
         "su -c 'code-server --install-extension /tmp/code-server/ms-toolsai.jupyter-2023.9.100.vsix' flytekit",
+        "su -c 'cp config/keybindings.json /home/flytekit/.local/share/code-server/User/keybindings.json' flytekit",
     ],
 )
 

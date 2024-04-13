@@ -137,7 +137,8 @@ print(llm_uri)
 Launch the vscode environment by running:
 
 ```{python}
-from utils import launch_vscode
+from utils import launch_vscode, stop_vscode
+
 vscode_execution_id = launch_vscode(llm_uri, remote)
 ```
 
@@ -150,10 +151,7 @@ We will highlight how to get the model in Union's VSCode enviornment and how to 
 To stop the VSCode environment, uncomment the following and run it:
 
 ```{python}
-# vscode_execution = remote.fetch_execution(name=vscode_execution_id)
-# if not vscode_execution.is_done:
-#     remote.terminate(vscode_execution, cause="Stop VSCode from Colab")
-#     print("Stopped VSCode instance!")
+# stop_vscode(vscode_execution_id, remote)
 ```
 
 Thank you for attending this workshop!
