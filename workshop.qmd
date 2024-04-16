@@ -1,3 +1,6 @@
+---
+jupyter: python3
+---
 # Union.ai Serverless Workshop
 
 Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
@@ -10,7 +13,7 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 ## Setup Workspace
 
 1. If you are not signed into Google, sign in by clicking the "Sign in" on the upper right of this page.
-2. If you have not already, please sign up for Union Serverless at: https://signup.union.ai/
+2. If you have not already, sign up for Union Serverless at: https://signup.union.ai/
 3. Navigate to https://serverless-1.us-east-2.s.union.ai/
 
 ```{python}
@@ -44,7 +47,7 @@ Go to the link provided to see your execution on Union!
 
 ## ML Workflow
 
-In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, please go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code.
+In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code.
 
 One benefit of `flytekit` is that you can run the workflow locally as well:
 
@@ -68,9 +71,9 @@ In this section, we highlight the following features in the SDK and UI:
 
 ## LLM Workflow
 
-In this section, we run a LLM workflow using Hugging Face and Weights and Biases. If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, please go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code.
+In this section, we run a LLM workflow using Hugging Face and Weights and Biases. If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code.
 
-First, please go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key. If you are creating a new Weights and Biases account, use **Personal** as your assoication.
+First, go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key. If you are creating a new Weights and Biases account, use **Personal** as your assoication.
 
 Run the following command to create a secret on Union and paste your wandb API key:
 
