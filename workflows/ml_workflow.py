@@ -57,7 +57,7 @@ def train_model(dataset: pd.DataFrame) -> BaseEstimator:
 @task(
     container_image=image,
     enable_deck=True,
-    requests=Resources(cpu="3", mem="2Gi"),
+    requests=Resources(cpu="2", mem="2Gi"),
 )
 def evaluate_model(model: BaseEstimator, dataset: pd.DataFrame) -> float:
     ctx = current_context()
