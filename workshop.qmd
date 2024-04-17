@@ -147,7 +147,7 @@ vscode_execution_id = launch_vscode(llm_uri, remote)
 
 In the VSCode environment:
 1. Open the `interact_with_model.py` file and click on `Run Cell` button at the top of file.
-2. The `review.txt` file contains reivews you can use to give the model.
+2. There are reviews in `interact_with_model.py` that you can pass to your model.
 
 We will highlight how to get the model in Union's VSCode enviornment and how to use Jupyter to interact query the model.
 
