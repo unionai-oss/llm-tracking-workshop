@@ -25,7 +25,7 @@ except ImportError:
 
 if IN_COLAB:
     !git clone --depth 1 https://github.com/unionai-oss/llm-tracking-workshop.git
-    %cd unionai-llm-tracking-workshop
+    %cd llm-tracking-workshop
     %pip install -r dev/requirements.txt
 ```
 
