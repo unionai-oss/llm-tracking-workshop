@@ -24,7 +24,7 @@ except ImportError:
     IN_COLAB = False
 
 if IN_COLAB:
-    !git clone --depth 1 https://github.com/thomasjpfan/unionai-llm-tracking-workshop.git
+    !git clone --depth 1 https://github.com/unionai-oss/llm-tracking-workshop.git
     %cd unionai-llm-tracking-workshop
     %pip install -r dev/requirements.txt
 ```
@@ -47,7 +47,7 @@ Go to the link provided to see your execution on Union!
 
 ## ML Workflow
 
-In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code.
+In this section, we will launch a simple ML workflow and get familiar with the Python SDK, `flytekit`. If you are on Codespaces, you can see the `workflows/ml_workflow.py` in the IDE. On Colab, go [to this link](https://github.com/unionai-oss/llm-tracking-workshop/blob/main/workflows/ml_workflow.py) to see the code.
 
 One benefit of `flytekit` is that you can run the workflow locally as well:
 
@@ -55,7 +55,7 @@ One benefit of `flytekit` is that you can run the workflow locally as well:
 !unionai run workflows/ml_workflow.py main
 ```
 
-And to run [the workflow](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/ml_workflow.py) on Union:
+And to run [the workflow](https://github.com/unionai-oss/llm-tracking-workshop/blob/main/workflows/ml_workflow.py) on Union:
 
 ```{python}
 !unionai run --remote workflows/ml_workflow.py main
@@ -71,7 +71,7 @@ In this section, we highlight the following features in the SDK and UI:
 
 ## LLM Workflow
 
-In this section, we run a LLM workflow using Hugging Face and Weights and Biases. If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, go [to this link](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code.
+In this section, we run a LLM workflow using Hugging Face and Weights and Biases. If you are on Codespaces, you can see the `workflows/llm_tracking.py` in the IDE. On Colab, go [to this link](https://github.com/unionai-oss/llm-tracking-workshop/blob/main/workflows/llm_tracking.py) to see the code.
 
 First, go to [https://wandb.ai/authorize](https://wandb.ai/authorize) to log into your Weights and Biases account and get an API key. If you are creating a new Weights and Biases account, then it's simplier to sign up with a **Personal** account.
 
@@ -93,7 +93,7 @@ If you are running into an issue with the secrets, uncomment the following code 
 # !unionai delete secret wandb_api_key
 ```
 
-With the secret define, you can now run [the workflow](https://github.com/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workflows/llm_tracking.py) on Union:
+With the secret define, you can now run [the workflow](https://github.com/unionai-oss/llm-tracking-workshop/blob/main/workflows/llm_tracking.py) on Union:
 
 ```{python}
 !unionai run --remote workflows/llm_tracking.py main \

@@ -9,5 +9,5 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 
 ## Getting Started
 
-Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/thomasjpfan/unionai-llm-tracking-workshop/blob/main/workshop.ipynb).
+Go to this [link to open the workshop.ipyndb notebook in Colab](https://colab.research.google.com/github/unionai-oss/llm-tracking-workshop/blob/main/workshop.ipynb).
 
