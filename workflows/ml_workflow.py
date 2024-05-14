@@ -30,7 +30,7 @@ image = ImageSpec(
 
 @task(
     cache=True,
-    cache_version="3",
+    cache_version="4",
     container_image=image,
     requests=Resources(cpu="2", mem="2Gi"),
 )
