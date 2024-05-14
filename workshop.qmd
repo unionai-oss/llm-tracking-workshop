@@ -13,7 +13,7 @@ Welcome to the Union.ai Serverless Workshop! In this workshop, we will cover:
 ## Setup Workspace
 
 1. If you are not signed into Google, sign in by clicking the "Sign in" on the upper right of this page.
-2. If you have not already, sign up for Union Serverless at: https://signup.union.ai/
+2. If you have not already, sign up for Union Serverless at: https://signup.union.ai/?group=workshop
 3. Navigate to https://serverless-1.us-east-2.s.union.ai/
 
 ```{python}
