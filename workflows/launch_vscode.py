@@ -128,11 +128,13 @@ class custom_vscode(vscode):
         return {self.LINK_TYPE_KEY: VSCODE_TYPE_VALUE, self.PORT_KEY: str(self.port)}
 
 
+HOUR_TO_SECONDS = 60 * 60
+
 @task(
     container_image=CONTAINER_IMAGE,
     requests=Resources(cpu="3", mem="6Gi"),
 )
-@custom_vscode
+@custom_vscode(max_idle_seconds=HOUR_TO_SECONDS)
 def start_vscode(model: FlyteFile):
     pass
 
